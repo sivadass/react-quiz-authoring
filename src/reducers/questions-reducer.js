@@ -1,10 +1,10 @@
-const expenseReducer = (state=[], action) => {
+const questionsReducer = (state=[], action) => {
   switch(action.type) {
-    case 'FETCH_EXPENSE':
-      const latestItems = action.payload;
+    case 'ADD_QUESTION':
+      const newQuestion = action.payload;
       return [
         ...state,
-        latestItems
+        newQuestion
       ]
 
     // case 'REMOVE_EXPENSE':
@@ -16,4 +16,4 @@ const expenseReducer = (state=[], action) => {
    }
 };
 
-export default expenseReducer;
+export default questionsReducer;

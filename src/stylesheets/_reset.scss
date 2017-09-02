@@ -24,7 +24,7 @@ select,
 textarea{
   font-family: inherit;
   font-size: inherit;
-  border: 1px solid #ccc;
+  border: 1px solid lighten($primary-blue,25%);
   border-radius: 4px;
   min-height: 36px;
   padding: 0 16px;

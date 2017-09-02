@@ -1,7 +1,9 @@
 // Add an Item
-export function postExpense(payee, amount, category, comment){
-  return dispatch => {
-    console.log("hi");
+export const addNewQuestion = (data) => {
+  console.log("hi...");
+  return {
+    type: 'ADD_QUESTION',
+    payload: data
   }
 }
 

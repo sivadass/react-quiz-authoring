@@ -1,11 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {postExpense} from '../actions/index';
+import {addNewQuestion} from '../actions/index';
 
 class LeftPane extends React.Component{
   constructor(props){
     super(props);
+    this.addQuestion = this.addQuestion.bind(this);
+  }
+  addQuestion(){
+    var data = "What is capital of India ?";
+    this.props.addNewQuestion(data);
+    console.log(this.props.questions);
   }
   
   render(){
@@ -22,7 +28,7 @@ class LeftPane extends React.Component{
             </ul>
           </div>
           <div className="action-block">
-            <button className="button-primary"><i className="material-icons">add_circle_outline</i> ADD QUESTION</button>
+            <button className="button-primary" onClick={this.addQuestion}><i className="material-icons">add_circle_outline</i> ADD QUESTION</button>
             <button><i className="material-icons">delete_forever</i> REMOVE QUESTION</button>
           </div>
         </div>
@@ -32,13 +38,13 @@ class LeftPane extends React.Component{
 }
 function mapStateToProps(state) {
   return {
-    expense: state
+    questions: state
   };
 }
 function mapDispatchToProps(dispatch) {
   return (
     bindActionCreators({
-      postExpense: postExpense
+      addNewQuestion: addNewQuestion
     }, dispatch)
   )
 }

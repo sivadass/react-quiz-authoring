@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import expenseReducer from './expense-reducer';
+import questionsReducer from './questions-reducer';
 
 const rootReducer = combineReducers({
-  expense: expenseReducer
+  questions: questionsReducer
   // More reducers if there are
   // can go here
 });
