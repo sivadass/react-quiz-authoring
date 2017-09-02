@@ -1,0 +1,72 @@
+.main{
+  display: flex;
+  display: -webkit-flex;
+  height: 100%;
+}
+.container{
+  padding: 48px;
+  @media (max-width: 768px){
+    padding: 16px;
+  }
+}
+.page-title{
+  display: flex;
+  display: -webkit-flex;
+  margin-bottom: 16px;
+  h2{
+    font-weight: 300;
+    font-size: 32px;
+    color: $gray-light;
+  }
+  .back-button{
+    margin-right: 32px;
+  }
+}
+.form-group{
+  display: flex;
+  display: -webkit-flex;
+  .form-label{
+    line-height: 36px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    width: 84px;
+  }
+}
+.action-block{
+  margin-top: 16px;
+  button{
+    margin-right: 16px;
+    i{
+      font-size: 21px;
+      vertical-align: text-bottom;
+      margin-right: 8px;
+    }
+  }
+}
+//Left Pane
+.left-pane{
+  flex-basis: 40%;
+  background: rgba(74, 85, 255, 0.18);
+}
+
+// Right Pane
+.right-pane{
+  flex-grow: 1;
+  background: rgba(222, 224, 255, 0.28);
+  .action-block{
+    margin-left: 94px;
+  }
+}
+.custom-file-input + label{
+  height: 36px;
+  line-height: 36px;
+  border: 1px solid #ccc;
+  min-width: 180px;
+  border-radius: 4px;
+  padding: 0 16px;
+  i{
+    font-size: 21px;
+    line-height: 34px;
+    margin-right: 8px;
+  }
+}

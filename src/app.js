@@ -4,15 +4,18 @@ import {bindActionCreators} from 'redux';
 import {removeExpense, addExpense, fetchExpenses} from './actions/index';
 const css = require('./stylesheets/style.scss');
 
+import LeftPane from './components/left-pane';
+import RightPane from './components/right-pane';
+
 class App extends React.Component{
   constructor(props){
     super(props);
   }
-
   render(){
     return(
-      <div className="container">
-        <h1>Hello</h1>
+      <div className="main">
+        <LeftPane />
+        <RightPane/>
       </div>
     );
   }

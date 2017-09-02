@@ -7,9 +7,14 @@ body {
   margin: 0;
   box-sizing: border-box; }
 
+h1,
+h2,
+h3 {
+  font-weight: 300; }
+
 a {
   text-decoration: none;
-  color: #4099ff; }
+  color: #6772e5; }
 
 input[type="text"],
 input[type="number"],
@@ -19,13 +24,20 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   border: 1px solid #ccc;
-  border-radius: 2px;
+  border-radius: 4px;
   min-height: 36px;
-  padding: 0 8px;
+  padding: 0 16px;
   display: block;
   width: 100%;
   margin-bottom: 16px;
   box-sizing: border-box; }
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="password"]:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #6772e5;
+    outline: none; }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -35,62 +47,41 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
   -moz-appearance: textfield; }
 
+input[type=file] {
+  height: 0;
+  width: 0;
+  visibility: hidden; }
+
 textarea {
   padding: 8px;
   height: 64px; }
 
 button {
   font-size: inherit;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  height: 32px;
-  padding: 0 8px;
-  display: block;
-  width: 100%;
-  margin-bottom: 16px;
+  border: 1px solid transparent;
+  background: #fff;
+  color: #999;
+  border-radius: 4px;
+  height: 36px;
+  padding: 0 16px;
+  margin: 0;
+  font-family: inherit;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
   cursor: pointer; }
-  button.button-inline {
-    display: inline-block;
-    width: auto;
-    margin: 0 4px 0 4px;
-    padding: 0 4px;
-    height: 24px; }
+  button:hover {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); }
+  button:focus {
+    outline: none; }
+  button.button-primary {
+    background: #6772e5;
+    color: #fff; }
 
 ul {
   list-style-type: none;
   margin-bottom: 16px; }
   ul li {
     margin-bottom: 4px;
-    border-bottom: 1px solid #eee;
     padding: 8px 0; }
-
-table {
-  width: 100%;
-  border-collapse: collapse; }
-
-/* Zebra striping */
-tr:nth-of-type(odd) {
-  background: #f7f7f7; }
-
-tr:hover {
-  background: #eeeeee !important; }
-
-th {
-  background: #eee;
-  text-transform: uppercase;
-  font-weight: normal;
-  color: #999; }
-
-td, th {
-  padding: 16px;
-  text-align: left; }
-
-td {
-  color: #666;
-  cursor: pointer; }
-  @media (max-width: 480px) {
-    td {
-      padding: 12px 8px; } }
 
 .text-ar {
   text-align: right; }
@@ -100,30 +91,6 @@ td {
 
 .text-ac {
   text-align: center; }
-
-.currency-sign:before {
-  content: "\20B9";
-  margin-right: 4px; }
-
-.container {
-  padding: 16px 64px; }
-  @media (max-width: 768px) {
-    .container {
-      padding-left: 32px;
-      padding-right: 32px; } }
-  @media (max-width: 480px) {
-    .container {
-      padding-left: 16px;
-      padding-right: 16px; } }
-
-.page-title {
-  display: flex;
-  display: -webkit-flex;
-  margin-bottom: 16px; }
-  .page-title h2 {
-    font-weight: 400; }
-  .page-title .back-button {
-    margin-right: 16px; }
 
 @font-face {
   font-family: 'Material Icons';
@@ -154,5 +121,67 @@ td {
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
   font-feature-settings: 'liga'; }
+
+.main {
+  display: flex;
+  display: -webkit-flex;
+  height: 100%; }
+
+.container {
+  padding: 48px; }
+  @media (max-width: 768px) {
+    .container {
+      padding: 16px; } }
+
+.page-title {
+  display: flex;
+  display: -webkit-flex;
+  margin-bottom: 16px; }
+  .page-title h2 {
+    font-weight: 300;
+    font-size: 32px;
+    color: #999; }
+  .page-title .back-button {
+    margin-right: 32px; }
+
+.form-group {
+  display: flex;
+  display: -webkit-flex; }
+  .form-group .form-label {
+    line-height: 36px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    width: 84px; }
+
+.action-block {
+  margin-top: 16px; }
+  .action-block button {
+    margin-right: 16px; }
+    .action-block button i {
+      font-size: 21px;
+      vertical-align: text-bottom;
+      margin-right: 8px; }
+
+.left-pane {
+  flex-basis: 40%;
+  background: rgba(74, 85, 255, 0.18); }
+
+.right-pane {
+  flex-grow: 1;
+  background: rgba(222, 224, 255, 0.28); }
+  .right-pane .action-block {
+    margin-left: 94px; }
+
+.custom-file-input + label {
+  height: 36px;
+  line-height: 36px;
+  border: 1px solid #ccc;
+  min-width: 180px;
+  border-radius: 4px;
+  padding: 0 16px; }
+  .custom-file-input + label i {
+    font-size: 21px;
+    line-height: 34px;
+    margin-right: 8px; }
 
 /*# sourceMappingURL=style.css.map*/

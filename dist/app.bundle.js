@@ -11273,6 +11273,14 @@ var _redux = __webpack_require__(25);
 
 var _index = __webpack_require__(101);
 
+var _leftPane = __webpack_require__(257);
+
+var _leftPane2 = _interopRequireDefault(_leftPane);
+
+var _rightPane = __webpack_require__(258);
+
+var _rightPane2 = _interopRequireDefault(_rightPane);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11297,12 +11305,9 @@ var App = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'container' },
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Hello'
-        )
+        { className: 'main' },
+        _react2.default.createElement(_leftPane2.default, null),
+        _react2.default.createElement(_rightPane2.default, null)
       );
     }
   }]);
@@ -24948,6 +24953,310 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(54);
+
+var _redux = __webpack_require__(25);
+
+var _index = __webpack_require__(101);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LeftPane = function (_React$Component) {
+  _inherits(LeftPane, _React$Component);
+
+  function LeftPane(props) {
+    _classCallCheck(this, LeftPane);
+
+    return _possibleConstructorReturn(this, (LeftPane.__proto__ || Object.getPrototypeOf(LeftPane)).call(this, props));
+  }
+
+  _createClass(LeftPane, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'left-pane' },
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'page-title' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Select Your Questions'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'questions' },
+            _react2.default.createElement(
+              'ul',
+              null,
+              _react2.default.createElement(
+                'li',
+                null,
+                'What is the capital of India?'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'What is the capital of USA?'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'action-block' },
+            _react2.default.createElement(
+              'button',
+              { className: 'button-primary' },
+              _react2.default.createElement(
+                'i',
+                { className: 'material-icons' },
+                'add_circle_outline'
+              ),
+              ' ADD QUESTION'
+            ),
+            _react2.default.createElement(
+              'button',
+              null,
+              _react2.default.createElement(
+                'i',
+                { className: 'material-icons' },
+                'delete_forever'
+              ),
+              ' REMOVE QUESTION'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return LeftPane;
+}(_react2.default.Component);
+
+function mapStateToProps(state) {
+  return {
+    expense: state
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)({
+    postExpense: _index.postExpense
+  }, dispatch);
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LeftPane);
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RightPane = function (_React$Component) {
+  _inherits(RightPane, _React$Component);
+
+  function RightPane(props) {
+    _classCallCheck(this, RightPane);
+
+    var _this = _possibleConstructorReturn(this, (RightPane.__proto__ || Object.getPrototypeOf(RightPane)).call(this, props));
+
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(RightPane, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "right-pane" },
+        _react2.default.createElement(
+          "div",
+          { className: "container" },
+          _react2.default.createElement(
+            "div",
+            { className: "page-title" },
+            _react2.default.createElement(
+              "h2",
+              null,
+              "Design Question 1"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "edit-question" },
+            _react2.default.createElement(
+              "div",
+              { className: "form-group" },
+              _react2.default.createElement(
+                "label",
+                { className: "form-label" },
+                "Question"
+              ),
+              _react2.default.createElement("input", { className: "form-control", type: "text" })
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "form-group" },
+              _react2.default.createElement(
+                "label",
+                { className: "form-label" },
+                "Image"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "form-control" },
+                _react2.default.createElement("input", { className: "custom-file-input", type: "file", id: "image" }),
+                _react2.default.createElement(
+                  "label",
+                  { className: "form-control", htmlFor: "image" },
+                  _react2.default.createElement(
+                    "i",
+                    { className: "material-icons" },
+                    "image"
+                  ),
+                  " Choose file"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "form-group" },
+              _react2.default.createElement(
+                "label",
+                { className: "form-label" },
+                "Option 1"
+              ),
+              _react2.default.createElement("input", { className: "form-control", type: "text" })
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "form-group" },
+              _react2.default.createElement(
+                "label",
+                { className: "form-label" },
+                "Option 2"
+              ),
+              _react2.default.createElement("input", { className: "form-control", type: "text" })
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "form-group" },
+              _react2.default.createElement(
+                "label",
+                { className: "form-label" },
+                "Option 3"
+              ),
+              _react2.default.createElement("input", { className: "form-control", type: "text" })
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "action-block" },
+            _react2.default.createElement(
+              "button",
+              { className: "button-primary" },
+              _react2.default.createElement(
+                "i",
+                { className: "material-icons" },
+                "add_circle_outline"
+              ),
+              " ADD OPTION"
+            ),
+            _react2.default.createElement(
+              "button",
+              null,
+              _react2.default.createElement(
+                "i",
+                { className: "material-icons" },
+                "delete_forever"
+              ),
+              " REMOVE OPTION"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return RightPane;
+}(_react2.default.Component);
+
+exports.default = RightPane;
 
 /***/ })
 /******/ ]);

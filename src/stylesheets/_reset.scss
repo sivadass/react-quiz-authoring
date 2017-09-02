@@ -7,6 +7,11 @@ body{
   margin: 0;
   box-sizing: border-box;
 }
+h1,
+h2,
+h3{
+  font-weight: 300;
+}
 a{
   text-decoration: none;
   color: $primary-blue;
@@ -20,13 +25,17 @@ textarea{
   font-family: inherit;
   font-size: inherit;
   border: 1px solid #ccc;
-  border-radius: 2px;
+  border-radius: 4px;
   min-height: 36px;
-  padding: 0 8px;
+  padding: 0 16px;
   display: block;
   width: 100%;
   margin-bottom: 16px;
   box-sizing: border-box;
+  &:focus{
+    border-color: $primary-blue;
+    outline: none;
+  }
 }
   
 input[type=number]::-webkit-inner-spin-button, 
@@ -34,8 +43,13 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
-input[type=number] {
+input[type=number]{
   -moz-appearance: textfield;
+}
+input[type=file]{
+  height: 0;
+  width: 0;
+  visibility: hidden;
 }
 textarea{
   padding: 8px;
@@ -43,20 +57,25 @@ textarea{
 }
 button{
   font-size: inherit;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  height: 32px;
-  padding: 0 8px;
-  display: block;
-  width: 100%;
-  margin-bottom: 16px;
+  border: 1px solid transparent;
+  background: $white;
+  color: $gray-light;
+  border-radius: 4px;
+  height: 36px;
+  padding: 0 16px;
+  margin: 0;
+  font-family: inherit;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  &:hover{
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  &:focus{
+    outline: none;
+  }
   cursor: pointer;
-  &.button-inline{
-    display: inline-block;
-    width: auto;
-    margin: 0 4px 0 4px;
-    padding: 0 4px;
-    height: 24px;
+  &.button-primary{
+    background: $primary-blue;
+    color: $white;
   }
 }
 
@@ -65,38 +84,7 @@ ul{
   margin-bottom: 16px;
   li{
     margin-bottom: 4px;
-    border-bottom: 1px solid #eee;
     padding: 8px 0;
-  }
-}
-
-// Table
-table { 
-  width: 100%; 
-  border-collapse: collapse; 
-}
-/* Zebra striping */
-tr:nth-of-type(odd) { 
-  background: #f7f7f7; 
-}
-tr:hover{
-  background: #eeeeee !important;
-}
-th { 
-  background: #eee; 
-  text-transform: uppercase;
-  font-weight: normal;
-  color: $gray-light;
-}
-td, th { 
-  padding: 16px; 
-  text-align: left; 
-}
-td{
-  color: $gray-medium;
-  cursor: pointer;
-  @media (max-width: 480px){
-    padding: 12px 8px;
   }
 }
 
@@ -109,34 +97,4 @@ td{
 }
 .text-ac{
   text-align: center;
-}
-.currency-sign{
-  &:before{
-    content: "\20b9";
-    margin-right: 4px;
-  }
-}
-
-// Scafollding
-.container{
-  padding: 16px 64px;
-  @media (max-width: 768px){
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @media (max-width: 480px){
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-.page-title{
-  display: flex;
-  display: -webkit-flex;
-  margin-bottom: 16px;
-  h2{
-    font-weight: 400;
-  }
-  .back-button{
-    margin-right: 16px;
-  }
 }
