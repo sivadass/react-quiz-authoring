@@ -25179,11 +25179,11 @@ var RightPane = function (_React$Component) {
               ),
               _react2.default.createElement(
                 "div",
-                { className: "form-control" },
+                { className: "custom-file-input-wrapper" },
                 _react2.default.createElement("input", { className: "custom-file-input", type: "file", id: "image" }),
                 _react2.default.createElement(
                   "label",
-                  { className: "form-control", htmlFor: "image" },
+                  { htmlFor: "image" },
                   _react2.default.createElement(
                     "i",
                     { className: "material-icons" },

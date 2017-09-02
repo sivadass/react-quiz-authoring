@@ -21,9 +21,9 @@ class RightPane extends React.Component{
             </div>
             <div className="form-group">
               <label className="form-label">Image</label>
-              <div className="form-control">
+              <div className="custom-file-input-wrapper">
                 <input className="custom-file-input" type="file" id="image"/>
-                <label className="form-control" htmlFor="image">
+                <label htmlFor="image">
                   <i className="material-icons">image</i> Choose file
                 </label>
               </div>
