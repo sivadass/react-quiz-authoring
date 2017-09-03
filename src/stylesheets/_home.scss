@@ -1,6 +1,7 @@
 .main{
   display: flex;
   display: -webkit-flex;
+  min-height: 100vh;
 }
 .container{
   padding: 48px;
