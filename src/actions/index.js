@@ -1,15 +1,15 @@
-// Add an Item
+// Add Question
 export const addNewQuestion = (data) => {
-  console.log("hi...");
   return {
     type: 'ADD_QUESTION',
     payload: data
   }
 }
 
-// Remove an item
-export const removeExpense = (key) => {
-  return dispatch => {
-    console.log("hi");
+// Edit Question
+export const editQuestion = (id) => {
+  return {
+    type: 'EDIT_QUESTION',
+    payload: id
   }
 }

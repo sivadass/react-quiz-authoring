@@ -1,18 +1,39 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {editQuestion} from '../actions/index';
 
 class RightPane extends React.Component{
   constructor(props){
     super(props);
     this.state = {
+      current : {},
+      currentId: this.props.currentQuestion.currentquestion
     }
   }
-  
+  componentWillReceiveProps(){
+    // this.setState({
+    //   currentId: this.props.currentQuestion.currentquestion
+    // }, function(){
+    //   console.log(this.state.currentId);
+    // })
+    // var result = this.props.currentQuestion.questions.filter(function(v) {
+    //   return v.id === this.state.currentId; // Filter out the appropriate one
+    // })[0];
+    // this.setState({
+    //   current : result
+    // }, function(){
+    //   //console.log(this.state.current.length)
+    // })
+  }
   render(){
+    console.log(this.props.questions);
     return(
       <div className="right-pane">
         <div className="container">
           <div className="page-title">
-            <h2>Design Question 1</h2>
+            <h2>Design Question</h2>
+            {this.state.currentId + "Hey"}
           </div>
           <div className="edit-question">
             <div className="form-group">
@@ -50,5 +71,18 @@ class RightPane extends React.Component{
     )
   }
 }
+function mapStateToProps(state) {
+  return {
+    questions: state,
+    currentQuestion: state
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return (
+    bindActionCreators({
+      editQuestion: editQuestion
+    }, dispatch)
+  )
+}
 
-export default RightPane;
+export default connect(mapStateToProps, mapDispatchToProps)(RightPane);

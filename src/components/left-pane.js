@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addNewQuestion} from '../actions/index';
+import {addNewQuestion, editQuestion} from '../actions/index';
+import uuid from 'uuid4';
 
 class LeftPane extends React.Component{
   constructor(props){
@@ -9,12 +10,22 @@ class LeftPane extends React.Component{
     this.addQuestion = this.addQuestion.bind(this);
   }
   addQuestion(){
-    var data = "What is capital of India ?";
+    var maxQuestions = this.props.questions.questions.length + 1;
+    var data = {
+      id: uuid(),
+      question: "New Question " + (maxQuestions++),
+    };
     this.props.addNewQuestion(data);
-    console.log(this.props.questions);
+  }
+  selectQuestion(id){
+    this.props.editQuestion(id);
   }
   
   render(){
+    var that = this;
+    var renderQuestions = this.props.questions.questions.map(function(item){
+      return <li key={item.id} onClick={that.selectQuestion.bind(that, item.id)}>{item.question}</li>;
+    })
     return(
       <div className="left-pane">
         <div className="container">
@@ -23,8 +34,7 @@ class LeftPane extends React.Component{
           </div>
           <div className="questions">
             <ul>
-              <li>What is the capital of India?</li>
-              <li>What is the capital of USA?</li>
+              {renderQuestions}
             </ul>
           </div>
           <div className="action-block">
@@ -44,7 +54,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return (
     bindActionCreators({
-      addNewQuestion: addNewQuestion
+      addNewQuestion: addNewQuestion,
+      editQuestion: editQuestion
     }, dispatch)
   )
 }
