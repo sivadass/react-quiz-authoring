@@ -124,8 +124,7 @@ ul {
 
 .main {
   display: flex;
-  display: -webkit-flex;
-  height: 100%; }
+  display: -webkit-flex; }
 
 .container {
   padding: 48px; }
@@ -195,5 +194,9 @@ ul {
     font-size: 21px;
     line-height: 34px;
     margin-right: 8px; }
+
+.image-preview {
+  margin: 16px 0;
+  max-width: 240px; }
 
 /*# sourceMappingURL=style.css.map*/

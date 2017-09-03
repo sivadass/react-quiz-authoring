@@ -17,14 +17,14 @@ class LeftPane extends React.Component{
     };
     this.props.addNewQuestion(data);
   }
-  selectQuestion(id){
-    this.props.editQuestion(id);
+  selectQuestion(question){
+    this.props.editQuestion(question);
   }
   
   render(){
     var that = this;
     var renderQuestions = this.props.questions.questions.map(function(item){
-      return <li key={item.id} onClick={that.selectQuestion.bind(that, item.id)}>{item.question}</li>;
+      return <li key={item.id} onClick={that.selectQuestion.bind(that, item)}>{item.question}</li>;
     })
     return(
       <div className="left-pane">

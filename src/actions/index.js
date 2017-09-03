@@ -7,9 +7,9 @@ export const addNewQuestion = (data) => {
 }
 
 // Edit Question
-export const editQuestion = (id) => {
+export const editQuestion = (question) => {
   return {
     type: 'EDIT_QUESTION',
-    payload: id
+    payload: question
   }
 }

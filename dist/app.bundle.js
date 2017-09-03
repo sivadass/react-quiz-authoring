@@ -16469,10 +16469,10 @@ var addNewQuestion = exports.addNewQuestion = function addNewQuestion(data) {
 };
 
 // Edit Question
-var editQuestion = exports.editQuestion = function editQuestion(id) {
+var editQuestion = exports.editQuestion = function editQuestion(question) {
   return {
     type: 'EDIT_QUESTION',
-    payload: id
+    payload: question
   };
 };
 
@@ -25342,8 +25342,8 @@ var LeftPane = function (_React$Component) {
     }
   }, {
     key: 'selectQuestion',
-    value: function selectQuestion(id) {
-      this.props.editQuestion(id);
+    value: function selectQuestion(question) {
+      this.props.editQuestion(question);
     }
   }, {
     key: 'render',
@@ -25352,7 +25352,7 @@ var LeftPane = function (_React$Component) {
       var renderQuestions = this.props.questions.questions.map(function (item) {
         return _react2.default.createElement(
           'li',
-          { key: item.id, onClick: that.selectQuestion.bind(that, item.id) },
+          { key: item.id, onClick: that.selectQuestion.bind(that, item) },
           item.question
         );
       });
@@ -25466,33 +25466,44 @@ var RightPane = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (RightPane.__proto__ || Object.getPrototypeOf(RightPane)).call(this, props));
 
     _this.state = {
-      current: {},
-      currentId: _this.props.currentQuestion.currentquestion
+      imageURL: ""
     };
     return _this;
   }
 
   _createClass(RightPane, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps() {
-      // this.setState({
-      //   currentId: this.props.currentQuestion.currentquestion
-      // }, function(){
-      //   console.log(this.state.currentId);
-      // })
-      // var result = this.props.currentQuestion.questions.filter(function(v) {
-      //   return v.id === this.state.currentId; // Filter out the appropriate one
-      // })[0];
-      // this.setState({
-      //   current : result
-      // }, function(){
-      //   //console.log(this.state.current.length)
-      // })
+    key: 'fileInputHandler',
+    value: function fileInputHandler(e) {
+      var file = e.target.files[0];
+      var reader = new FileReader();
+      var url = reader.readAsDataURL(file);
+      reader.onloadend = function (e) {
+        this.setState({ imageURL: [reader.result] });
+      }.bind(this);
+      console.log(url);
     }
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.props.questions);
+      if (!this.props.data.currentquestion) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'right-pane' },
+          _react2.default.createElement(
+            'div',
+            { className: 'container' },
+            _react2.default.createElement(
+              'div',
+              { className: 'page-title' },
+              _react2.default.createElement(
+                'h2',
+                null,
+                'Please choose a question to design'
+              )
+            )
+          )
+        );
+      }
       return _react2.default.createElement(
         'div',
         { className: 'right-pane' },
@@ -25506,8 +25517,7 @@ var RightPane = function (_React$Component) {
               'h2',
               null,
               'Design Question'
-            ),
-            this.state.currentId + "Hey"
+            )
           ),
           _react2.default.createElement(
             'div',
@@ -25520,7 +25530,7 @@ var RightPane = function (_React$Component) {
                 { className: 'form-label' },
                 'Question'
               ),
-              _react2.default.createElement('input', { className: 'form-control', type: 'text' })
+              _react2.default.createElement('input', { className: 'form-control', type: 'text', value: this.props.data.currentquestion.question })
             ),
             _react2.default.createElement(
               'div',
@@ -25533,7 +25543,7 @@ var RightPane = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'custom-file-input-wrapper' },
-                _react2.default.createElement('input', { className: 'custom-file-input', type: 'file', id: 'image' }),
+                _react2.default.createElement('input', { className: 'custom-file-input', type: 'file', id: 'image', onChange: this.fileInputHandler.bind(this) }),
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'image' },
@@ -25543,7 +25553,8 @@ var RightPane = function (_React$Component) {
                     'image'
                   ),
                   ' Choose file'
-                )
+                ),
+                _react2.default.createElement('img', { className: 'image-preview', src: this.state.imageURL })
               )
             ),
             _react2.default.createElement(
@@ -25554,7 +25565,7 @@ var RightPane = function (_React$Component) {
                 { className: 'form-label' },
                 'Option 1'
               ),
-              _react2.default.createElement('input', { className: 'form-control', type: 'text' })
+              _react2.default.createElement('input', { className: 'form-control', type: 'text', value: this.props.data.currentquestion.options ? this.props.data.currentquestion.options.a : "No option" })
             ),
             _react2.default.createElement(
               'div',
@@ -25564,7 +25575,7 @@ var RightPane = function (_React$Component) {
                 { className: 'form-label' },
                 'Option 2'
               ),
-              _react2.default.createElement('input', { className: 'form-control', type: 'text' })
+              _react2.default.createElement('input', { className: 'form-control', type: 'text', value: this.props.data.currentquestion.options ? this.props.data.currentquestion.options.b : "No option" })
             ),
             _react2.default.createElement(
               'div',
@@ -25574,7 +25585,7 @@ var RightPane = function (_React$Component) {
                 { className: 'form-label' },
                 'Option 3'
               ),
-              _react2.default.createElement('input', { className: 'form-control', type: 'text' })
+              _react2.default.createElement('input', { className: 'form-control', type: 'text', value: this.props.data.currentquestion.options ? this.props.data.currentquestion.options.c : "No option" })
             )
           ),
           _react2.default.createElement(
@@ -25611,8 +25622,7 @@ var RightPane = function (_React$Component) {
 
 function mapStateToProps(state) {
   return {
-    questions: state,
-    currentQuestion: state
+    data: state
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -25709,8 +25719,8 @@ var editReducer = function editReducer() {
 
   switch (action.type) {
     case 'EDIT_QUESTION':
-      var id = action.payload;
-      return state = id;
+      console.log(action.payload);
+      return action.payload;
     default:
       return state;
   }
