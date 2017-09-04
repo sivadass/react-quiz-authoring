@@ -6,10 +6,18 @@ export const addNewQuestion = (data) => {
   }
 }
 
-// Edit Question
-export const editQuestion = (question) => {
+// Select Question
+export const selectQuestion = (question) => {
   return {
     type: 'EDIT_QUESTION',
     payload: question
+  }
+}
+
+// Remove Question
+export const removeQuestion = (id) => {
+  return {
+    type: 'REMOVE_QUESTION',
+    payload: id
   }
 }

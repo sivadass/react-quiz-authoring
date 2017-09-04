@@ -6,11 +6,10 @@ const questionsReducer = (state=[], action) => {
         ...state,
         newQuestion
       ]
-
-    // case 'REMOVE_EXPENSE':
-    //   const idToRemove = action.payload;
-    //   const newState = state.filter((item) => item.id !== idToRemove);
-    //   return state = newState;
+    case 'REMOVE_QUESTION':
+      const idToRemove = action.payload;
+      const newState = state.filter((item) => item.id !== idToRemove);
+      return state = newState;
     default:
       return state;
    }

@@ -1,16 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addNewQuestion, editQuestion} from '../actions/index';
+import {addNewQuestion, selectQuestion, removeQuestion} from '../actions/index';
 import uuid from 'uuid4';
 
 class LeftPane extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      removeMode: false
+    }
     this.addQuestion = this.addQuestion.bind(this);
+    this.toggleRemoveMode = this.toggleRemoveMode.bind(this);
   }
   addQuestion(){
-    var maxQuestions = this.props.questions.questions.length + 1;
+    var maxQuestions = this.props.data.questions.length + 1;
     var data = {
       id: uuid(),
       question: "New Question " + (maxQuestions++),
@@ -18,13 +22,30 @@ class LeftPane extends React.Component{
     this.props.addNewQuestion(data);
   }
   selectQuestion(question){
-    this.props.editQuestion(question);
+    this.props.selectQuestion(question);
+  }
+  removeQuestion(id){
+    this.props.removeQuestion(id);
+  }
+  toggleRemoveMode(){
+    this.setState({
+      removeMode: !this.state.removeMode
+    })
   }
   
   render(){
     var that = this;
-    var renderQuestions = this.props.questions.questions.map(function(item){
-      return <li key={item.id} onClick={that.selectQuestion.bind(that, item)}>{item.question}</li>;
+    console.log(this.props.data);
+    var renderQuestions = this.props.data.questions.map(function(item) {
+      return(
+        <li key={item.id} className={that.state.removeMode ? "remove-mode-active" : ""}>
+          <a href="#" className="question-item" onClick={that.selectQuestion.bind(that, item)}>
+            {item.question}</a>
+          <a href="#" className="remove-question" onClick={that.removeQuestion.bind(that, item.id)} title="Remove this question">
+            <i className="material-icons">close</i>
+          </a>
+        </li>
+      )
     })
     return(
       <div className="left-pane">
@@ -38,8 +59,8 @@ class LeftPane extends React.Component{
             </ul>
           </div>
           <div className="action-block">
-            <button className="button-primary" onClick={this.addQuestion}><i className="material-icons">add_circle_outline</i> ADD QUESTION</button>
-            <button><i className="material-icons">delete_forever</i> REMOVE QUESTION</button>
+            <button className={that.state.removeMode ? "button-primary disabled" : "button-primary"} onClick={this.addQuestion}><i className="material-icons">add_circle_outline</i> ADD QUESTION</button>
+            <button className={that.state.removeMode ? "remove-button-active" : ""} onClick={this.toggleRemoveMode}><i className="material-icons">delete_forever</i> {that.state.removeMode ? "DONE REMOVING" : "REMOVE QUESTIONS"}</button>
           </div>
         </div>
       </div>
@@ -48,14 +69,15 @@ class LeftPane extends React.Component{
 }
 function mapStateToProps(state) {
   return {
-    questions: state
+    data: state
   };
 }
 function mapDispatchToProps(dispatch) {
   return (
     bindActionCreators({
       addNewQuestion: addNewQuestion,
-      editQuestion: editQuestion
+      selectQuestion: selectQuestion,
+      removeQuestion: removeQuestion
     }, dispatch)
   )
 }

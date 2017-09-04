@@ -48,7 +48,37 @@
   flex-basis: 40%;
   background: rgba(74, 85, 255, 0.18);
 }
-
+.remove-question{
+  visibility: hidden;
+  opacity: 0;
+  margin-left: 8px;
+  color: $red;
+  transition: opacity 300ms ease-in;
+  i{
+    font-size: 18px;
+    vertical-align: text-bottom;
+    border: 1px solid transparent;
+    border-radius: 50%;
+  }
+  &:hover{
+    i{
+      border-color: $red;
+    }
+  }
+}
+.remove-mode-active{
+  .question-item{
+    pointer-events: none;
+  }
+  .remove-question{
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.remove-button-active{
+  background: $red;
+  color: $white;
+}
 // Right Pane
 .right-pane{
   flex-grow: 1;
