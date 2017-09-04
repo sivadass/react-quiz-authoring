@@ -129,6 +129,9 @@ ul {
   display: flex;
   display: -webkit-flex;
   min-height: 100vh; }
+  @media (max-width: 660px) {
+    .main {
+      display: block; } }
 
 .container {
   padding: 48px; }
@@ -144,6 +147,12 @@ ul {
     font-weight: 300;
     font-size: 32px;
     color: #999; }
+    @media (max-width: 480px) {
+      .page-title h2 {
+        font-size: 28px; } }
+    @media (max-width: 480px) {
+      .page-title h2 {
+        font-size: 24px; } }
   .page-title .back-button {
     margin-right: 32px; }
 
@@ -160,14 +169,25 @@ ul {
   margin-top: 16px; }
   .action-block button {
     margin-right: 16px; }
+    .action-block button:last-child {
+      margin-right: 0; }
     .action-block button i {
       font-size: 21px;
       vertical-align: text-bottom;
       margin-right: 8px; }
+    @media (max-width: 940px) {
+      .action-block button {
+        margin: 0 0 16px 0;
+        width: 100%; } }
 
 .left-pane {
   flex-basis: 40%;
+  min-width: 260px;
+  flex-shrink: 0;
   background: rgba(74, 85, 255, 0.18); }
+
+.question-item {
+  color: #333; }
 
 .remove-question {
   visibility: hidden;
@@ -199,6 +219,9 @@ ul {
   background: rgba(222, 224, 255, 0.28); }
   .right-pane .action-block {
     margin-left: 94px; }
+    @media (max-width: 480px) {
+      .right-pane .action-block {
+        margin-left: 0; } }
 
 .custom-file-input-wrapper {
   width: 100%; }

@@ -2,6 +2,9 @@
   display: flex;
   display: -webkit-flex;
   min-height: 100vh;
+  @media (max-width: 660px){
+    display: block;
+  }
 }
 .container{
   padding: 48px;
@@ -17,6 +20,12 @@
     font-weight: 300;
     font-size: 32px;
     color: $gray-light;
+    @media (max-width: 480px){
+      font-size: 28px;
+    }
+    @media (max-width: 480px){
+      font-size: 24px;
+    }
   }
   .back-button{
     margin-right: 32px;
@@ -36,17 +45,29 @@
   margin-top: 16px;
   button{
     margin-right: 16px;
+    &:last-child{
+      margin-right: 0;
+    }
     i{
       font-size: 21px;
       vertical-align: text-bottom;
       margin-right: 8px;
+    }
+    @media (max-width: 940px){
+      margin: 0 0 16px 0;
+      width: 100%;
     }
   }
 }
 //Left Pane
 .left-pane{
   flex-basis: 40%;
+  min-width: 260px;
+  flex-shrink: 0;
   background: rgba(74, 85, 255, 0.18);
+}
+.question-item{
+  color: $gray-dark;
 }
 .remove-question{
   visibility: hidden;
@@ -85,6 +106,9 @@
   background: rgba(222, 224, 255, 0.28);
   .action-block{
     margin-left: 94px;
+    @media (max-width: 480px){
+      margin-left: 0;
+    }
   }
 }
 .custom-file-input-wrapper{
